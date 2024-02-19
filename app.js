@@ -2,6 +2,8 @@ const express = require('express')
 
 const app = express()
 
+app.use(helmet({ crossOriginEmbedderPolicy: false }))
+
 app.get('/', (req, res) => {
   res.send('<h1>Hello Express!!!</h1>')
 })
