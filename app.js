@@ -1,9 +1,12 @@
 import express from 'express'
 import helmet from 'helmet'
+import { connectDB } from './db/connect.js'
 
 const app = express()
 
 app.use(helmet({ crossOriginEmbedderPolicy: false }))
+
+connectDB()
 
 app.get('/', (req, res) => {
   res.send('<h1>Hello Express!!!</h1>')
