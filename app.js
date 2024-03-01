@@ -2,6 +2,7 @@ import express from 'express'
 import helmet from 'helmet'
 import cors from 'cors'
 import { db } from './db/connect.js'
+import router from './services/router.js'
 
 const app = express()
 
@@ -16,6 +17,7 @@ app.use(cors())
 // PostgreSQL
 db.connect()
 
+app.use('/', router)
 app.get('/', (req, res) => res.send('<h1>Hello Express!!!</h1>'))
 
 const port = process.env.PORT || 8000
