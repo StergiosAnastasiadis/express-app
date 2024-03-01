@@ -1,10 +1,14 @@
 import express from 'express'
 import helmet from 'helmet'
+import cors from 'cors'
 import { db } from './db/connect.js'
 
 const app = express()
 
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
 app.use(helmet({ crossOriginEmbedderPolicy: false }))
+app.use(cors())
 
 // MongoDB
 // connectDB()
