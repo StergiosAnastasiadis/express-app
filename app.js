@@ -16,9 +16,7 @@ app.use(cors())
 // PostgreSQL
 db.connect()
 
-app.get('/', (req, res) => {
-  res.send('<h1>Hello Express!!!</h1>')
-})
+app.get('/', (req, res) => res.send('<h1>Hello Express!!!</h1>'))
 
 const port = process.env.PORT || 8000
 app.listen(port, () => console.log(`Server listening on port: ${port}`))
