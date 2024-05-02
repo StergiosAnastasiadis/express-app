@@ -46,7 +46,7 @@ const registerUser = async (req, res) => {
 
     const activationToken = randomBytes(20).toString('hex');
 
-    const encryptedPassword = bcrypt.hashSync(password, 10)
+    const encryptedPassword = await bcrypt.hash(password, 10)
 
     await db.query('INSERT INTO users (email, password, firstname, lastname, active, "activationToken") VALUES ($1, $2, $3, $4, $5, $6)',
         [email, encryptedPassword, firstname, lastname, false, activationToken]
