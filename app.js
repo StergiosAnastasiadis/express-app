@@ -12,9 +12,6 @@ app.use(express.urlencoded({ extended: true }))
 app.use(helmet({ crossOriginEmbedderPolicy: false }))
 app.use(cors())
 
-// MongoDB
-// connectDB()
-
 // PostgreSQL
 db.connect()
 
