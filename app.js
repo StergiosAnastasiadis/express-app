@@ -1,15 +1,22 @@
 import express from 'express'
 import helmet from 'helmet'
 import cors from 'cors'
+
 import { db } from './db/connect.js'
+
 import router from './services/router.js'
+
 import { notFound } from './middleware/errorMiddleware.js'
 
 const app = express()
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
+
+// Add Security Headers
 app.use(helmet({ crossOriginEmbedderPolicy: false }))
+
+// Enable CORS
 app.use(cors())
 
 // PostgreSQL

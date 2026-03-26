@@ -4,7 +4,7 @@ import _ from 'lodash';
 import bcrypt from 'bcryptjs'
 import { generateToken, getUser } from '../utils/user.js'
 
-const authUser = async (req, res) => {
+export const authUser = async (req, res) => {
     const email = req.body.email?.trim().toLowerCase()
     const password = req.body.password?.trim()
 
@@ -26,7 +26,7 @@ const authUser = async (req, res) => {
     res.status(200).send({ error: false, userInfo, user })
 }
 
-const registerUser = async (req, res) => {
+export const registerUser = async (req, res) => {
     const email = req.body.email?.toLowerCase().trim()
     const password = req.body.password?.trim()
     const firstname = _.capitalize(req.body.firstname)
@@ -53,9 +53,4 @@ const registerUser = async (req, res) => {
     )
 
     res.send({ email, firstname, lastname })
-}
-
-export {
-    authUser,
-    registerUser
 }
