@@ -5,8 +5,8 @@
   "main": "app.js",
   "type": "module",
   "scripts": {
-    "start": "node --env-file .env app.js",
-    "dev": "node --watch --env-file .env app.js",
+    "start": "node --env-file .env src/app.js",
+    "dev": "node --watch --env-file .env src/app.js",
     "test": "jest",
     "test-watch": "jest --watch"
   },
