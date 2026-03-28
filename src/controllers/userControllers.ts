@@ -1,10 +1,14 @@
 import { randomBytes } from 'crypto';
-import { db } from '../db/connect.js';
 import _ from 'lodash';
 import bcrypt from 'bcryptjs'
+
+import { db } from '../db/connect.js';
+
 import { generateToken, getUser } from '../utils/user.js'
 
-export const authUser = async (req, res) => {
+import type { Request, Response, NextFunction } from 'express';
+
+export const authUser = async (req: Request, res: Response) => {
     const email = req.body.email?.trim().toLowerCase()
     const password = req.body.password?.trim()
 
@@ -26,7 +30,7 @@ export const authUser = async (req, res) => {
     res.status(200).send({ error: false, userInfo, user })
 }
 
-export const registerUser = async (req, res) => {
+export const registerUser = async (req: Request, res: Response) => {
     const email = req.body.email?.toLowerCase().trim()
     const password = req.body.password?.trim()
     const firstname = _.capitalize(req.body.firstname)

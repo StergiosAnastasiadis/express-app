@@ -1,7 +1,8 @@
-import { db } from "../db/connect.js"
 import jwt from 'jsonwebtoken'
 
-export const getUser = async (email) => {
+import { db } from "../db/connect.js"
+
+export const getUser = async (email: string) => {
     const query = `SELECT email, password, firstname, lastname FROM users WHERE email='${email}'`
     const user = await db.query(query)
 
@@ -10,6 +11,7 @@ export const getUser = async (email) => {
     return false
 }
 
+// @ts-ignore
 export const generateToken = async (userInfo) => {
     return jwt.sign(userInfo, 'JWT_SECRET', { expiresIn: '1h' })
 }
