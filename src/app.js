@@ -29,16 +29,3 @@ app.use(notFound)
 
 const port = process.env.PORT || 8000
 app.listen(port, () => console.log(`Server listening on port: ${port}`))
-
-
-// TODO Add Typescript
-// TODO Add ES Lint and Prettier
-// TODO Add some Unit tests
-
-// TODO Add a Docker-Compose YML File to start a Postgres DB
-// TODO Add some Routes
-// ? Add Passport.js for Auth ?
-
-// TODO Check the ZTM Auth Section with Cookies and Sessions
-
-// TODO 
