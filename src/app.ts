@@ -2,7 +2,7 @@ import express from 'express'
 import helmet from 'helmet'
 import cors from 'cors'
 
-// import { db } from './db/connect.js'
+import { db } from './db/connect.js'
 
 import router from './services/router.js'
 
@@ -20,7 +20,7 @@ app.use(helmet({ crossOriginEmbedderPolicy: false }))
 app.use(cors())
 
 // PostgreSQL
-// db.connect()
+db.connect()
 
 app.use('/', router)
 app.get('/', (req, res) => res.send('<h1>Hello Express!!!</h1>'))
