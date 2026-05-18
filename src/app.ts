@@ -27,5 +27,5 @@ app.use(notFound);
 
 const port: number = Number(process.env.PORT) || 8000;
 app.listen(port, () => {
-    console.log(`Server listening on port: ${port.toString()}`);
+  console.log(`Server listening on port: ${port.toString()}`);
 });
