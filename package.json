@@ -16,7 +16,9 @@
     "test": "vitest",
     "test:run": "vitest --run",
     "test:ui": "vitest --ui",
-    "coverage": "vitest run --coverage"
+    "coverage": "vitest run --coverage",
+    "prepare": "husky",
+    "pre-commit": "lint-staged"
   },
   "keywords": [],
   "author": "",
@@ -45,10 +47,21 @@
     "@vitest/eslint-plugin": "1.6.17",
     "eslint": "10.4.0",
     "eslint-plugin-perfectionist": "5.9.0",
+    "husky": "9.1.7",
+    "lint-staged": "17.0.5",
     "prettier": "3.8.3",
     "tsx": "4.22.1",
     "typescript": "6.0.3",
     "typescript-eslint": "8.59.3",
     "vitest": "4.1.6"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint",
+      "prettier --check"
+    ],
+    "*.{json,yml,yaml,md}": [
+      "prettier --check"
+    ]
   }
 }
