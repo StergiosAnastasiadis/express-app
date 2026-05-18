@@ -5,16 +5,18 @@
   "main": "dist/app.js",
   "type": "module",
   "scripts": {
-    "start": "tsc; node --env-file .env dist/app.js",
+    "start": "npm run build && node --env-file .env dist/app.js",
     "dev": "tsx --watch --env-file .env src/app.ts",
-    "build": "tsc",
+    "build": "tsc -p tsconfig.build.json",
     "type-check": "tsc --noEmit",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "test": "jest",
-    "test-watch": "jest --watch"
+    "test": "vitest",
+    "test:run": "vitest --run",
+    "test:ui": "vitest --ui",
+    "coverage": "vitest run --coverage"
   },
   "keywords": [],
   "author": "",
@@ -39,12 +41,14 @@
     "@types/lodash": "4.17.24",
     "@types/node": "25.8.0",
     "@types/pg": "8.20.0",
+    "@vitest/coverage-v8": "4.1.6",
+    "@vitest/eslint-plugin": "1.6.17",
     "eslint": "10.4.0",
     "eslint-plugin-perfectionist": "5.9.0",
-    "jest": "30.4.2",
     "prettier": "3.8.3",
     "tsx": "4.22.1",
     "typescript": "6.0.3",
-    "typescript-eslint": "8.59.3"
+    "typescript-eslint": "8.59.3",
+    "vitest": "4.1.6"
   }
 }

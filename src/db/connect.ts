@@ -6,4 +6,4 @@ export const db = new pg.Client({
   password: process.env.POSTGRES_PASSWORD,
   port: Number(process.env.POSTGRES_PORT),
   user: process.env.POSTGRES_USER,
-})
+});
