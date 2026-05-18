@@ -1,0 +1,27 @@
+# Build outputs and cache
+dist/
+.cache/
+
+# Dependencies
+node_modules/
+package-lock.json
+
+# Testing
+coverage/
+
+# IDE, Git, and CI/CD config
+.git/
+.github/
+.husky/
+.vscode/
+.devcontainer/
+
+# Documentation
+CHANGELOG.md
+README.md
+docs/
+
+# Docker
+Dockerfile
+.dockerignore
+docker-compose.yml

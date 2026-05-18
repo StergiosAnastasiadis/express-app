@@ -8,6 +8,9 @@
     "start": "tsc; node --env-file .env dist/app.js",
     "dev": "tsx --watch --env-file .env src/app.ts",
     "build": "tsc",
+    "type-check": "tsc --noEmit",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
     "test": "jest",
     "test-watch": "jest --watch"
   },
@@ -34,6 +37,7 @@
     "@types/node": "25.8.0",
     "@types/pg": "8.20.0",
     "jest": "30.4.2",
+    "prettier": "3.8.3",
     "tsx": "4.22.1",
     "typescript": "6.0.3"
   }
