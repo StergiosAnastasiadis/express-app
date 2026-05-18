@@ -25,7 +25,7 @@ app.get('/', (req, res) => res.send('<h1>Hello Express!!!</h1>'));
 
 app.use(notFound);
 
-const port: number = Number(process.env.PORT) || 8000;
+const port = process.env.PORT ?? 8000;
 app.listen(port, () => {
   console.log(`Server listening on port: ${port.toString()}`);
 });
