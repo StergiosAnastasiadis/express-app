@@ -1,12 +1,15 @@
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+import type { Request, Response } from 'express';
+
+import bcrypt from 'bcryptjs';
 import { randomBytes } from 'crypto';
 import _ from 'lodash';
-import bcrypt from 'bcryptjs';
 
 import { db } from '../db/connect.js';
-
 import { generateToken, getUser } from '../utils/user.js';
-
-import type { Request, Response, NextFunction } from 'express';
 
 export const authUser = async (req: Request, res: Response) => {
   const email = req.body.email?.trim().toLowerCase();
@@ -25,9 +28,9 @@ export const authUser = async (req: Request, res: Response) => {
     return res.status(403).send({ message: 'Incorrect Password' });
   }
 
-  const user = await generateToken(userInfo);
+  const user = generateToken(userInfo);
 
-  res.status(200).send({ error: false, userInfo, user });
+  res.status(200).send({ error: false, user, userInfo });
 };
 
 export const registerUser = async (req: Request, res: Response) => {

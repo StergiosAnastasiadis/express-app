@@ -1,12 +1,10 @@
+import cors from 'cors';
 import express from 'express';
 import helmet from 'helmet';
-import cors from 'cors';
 
 import { db } from './db/connect.js';
-
-import router from './services/router.js';
-
 import { notFound } from './middleware/errorMiddleware.js';
+import router from './services/router.js';
 
 const app = express();
 
@@ -20,12 +18,14 @@ app.use(helmet({ crossOriginEmbedderPolicy: false }));
 app.use(cors());
 
 // PostgreSQL
-db.connect();
+await db.connect();
 
 app.use('/', router);
 app.get('/', (req, res) => res.send('<h1>Hello Express!!!</h1>'));
 
 app.use(notFound);
 
-const port = process.env.PORT || 8000;
-app.listen(port, () => console.log(`Server listening on port: ${port}`));
+const port: number = Number(process.env.PORT) || 8000;
+app.listen(port, () => {
+    console.log(`Server listening on port: ${port.toString()}`);
+});
