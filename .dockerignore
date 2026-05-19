@@ -1,3 +1,25 @@
-.git
+# Node
 node_modules
+npm-debug.log
+
+# Build output
 dist
+coverage
+
+# Environment
+.env
+
+# Git
+.git
+.gitignore
+.github
+
+# Editor / tooling
+.vscode
+.husky
+.nvmrc
+.prettierrc
+.prettierignore
+
+# Docker
+docker-compose.yml
