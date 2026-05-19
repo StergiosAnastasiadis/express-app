@@ -9,7 +9,8 @@ import { randomBytes } from 'crypto';
 import _ from 'lodash';
 
 import { db } from '../../../db/connect.js';
-import { generateToken, getUser } from '../../../utils/user.js';
+import { generateToken } from '../../../utils/user.js';
+import { getUser } from '../repository/user.repository.js';
 
 export const authUser = async (req: Request, res: Response) => {
   const email = req.body.email?.trim().toLowerCase();
