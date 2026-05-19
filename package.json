@@ -31,7 +31,8 @@
     "helmet": "8.1.0",
     "jsonwebtoken": "9.0.3",
     "lodash": "4.18.1",
-    "pg": "8.20.0"
+    "pg": "8.20.0",
+    "zod": "4.4.3"
   },
   "devDependencies": {
     "@eslint/js": "10.0.1",
@@ -46,6 +47,7 @@
     "@vitest/coverage-v8": "4.1.6",
     "@vitest/eslint-plugin": "1.6.17",
     "eslint": "10.4.0",
+    "eslint-plugin-import-zod": "1.2.1",
     "eslint-plugin-perfectionist": "5.9.0",
     "husky": "9.1.7",
     "lint-staged": "17.0.5",
