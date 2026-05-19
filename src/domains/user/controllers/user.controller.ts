@@ -8,8 +8,8 @@ import bcrypt from 'bcryptjs';
 import { randomBytes } from 'crypto';
 import _ from 'lodash';
 
-import { db } from '../db/connect.js';
-import { generateToken, getUser } from '../utils/user.js';
+import { db } from '../../../db/connect.js';
+import { generateToken, getUser } from '../../../utils/user.js';
 
 export const authUser = async (req: Request, res: Response) => {
   const email = req.body.email?.trim().toLowerCase();

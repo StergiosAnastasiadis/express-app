@@ -2,7 +2,7 @@ import type { QueryResult } from 'pg';
 
 import jwt from 'jsonwebtoken';
 
-import type { User } from '../models/user.model.js';
+import type { User } from '../domains/user/model/user.model.js';
 
 import { db } from '../db/connect.js';
 
