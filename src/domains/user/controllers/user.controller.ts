@@ -6,8 +6,7 @@ import { randomBytes } from 'crypto';
 import type { AuthUser, RegisterUser } from '../model/user.model.js';
 
 import { db } from '../../../db/connect.js';
-import { generateToken } from '../../../utils/user.js';
-import { getUser } from '../repository/user.repository.js';
+import { generateToken, getUser } from '../repository/user.repository.js';
 
 export const authUser = async (req: Request<object, object, AuthUser>, res: Response) => {
   const { email, password } = req.body;
