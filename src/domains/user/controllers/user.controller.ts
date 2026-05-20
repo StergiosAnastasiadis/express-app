@@ -1,24 +1,16 @@
-/* eslint-disable @typescript-eslint/no-unsafe-argument */
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import type { Request, Response } from 'express';
 
 import bcrypt from 'bcryptjs';
 import { randomBytes } from 'crypto';
-import _ from 'lodash';
+
+import type { AuthUser, RegisterUser } from '../model/user.model.js';
 
 import { db } from '../../../db/connect.js';
 import { generateToken } from '../../../utils/user.js';
 import { getUser } from '../repository/user.repository.js';
 
-export const authUser = async (req: Request, res: Response) => {
-  const email = req.body.email?.trim().toLowerCase();
-  const password = req.body.password?.trim();
-
-  if (!email || !password) {
-    return res.status(400).send({ error: true, message: 'All Fields Required' });
-  }
+export const authUser = async (req: Request<object, object, AuthUser>, res: Response) => {
+  const { email, password } = req.body;
 
   const userInfo = await getUser(email);
   if (!userInfo) {
@@ -34,18 +26,8 @@ export const authUser = async (req: Request, res: Response) => {
   res.status(200).send({ error: false, user, userInfo });
 };
 
-export const registerUser = async (req: Request, res: Response) => {
-  const email = req.body.email?.toLowerCase().trim();
-  const password = req.body.password?.trim();
-  const firstname = _.capitalize(req.body.firstname);
-  const lastname = _.capitalize(req.body.lastname);
-
-  if (!email || !password || !firstname || !lastname) {
-    res
-      .status(400)
-      .send({ error: true, message: 'All Fields Required required - Email | Password  | Firstname | Lastname ' });
-    return;
-  }
+export const registerUser = async (req: Request<object, object, RegisterUser>, res: Response) => {
+  const { email, firstname, lastname, password } = req.body;
 
   const user = await getUser(email);
 
