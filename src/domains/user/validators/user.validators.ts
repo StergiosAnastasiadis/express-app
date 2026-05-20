@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import * as z from 'zod';
 
-const email = z.string().transform((e) => e.toLowerCase().trim());
+const email = z.email().transform((e) => e.toLowerCase().trim());
 const password = z.string().transform((p) => p.trim());
 
 const firstname = z
