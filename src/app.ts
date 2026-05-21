@@ -3,7 +3,7 @@ import express from 'express';
 import helmet from 'helmet';
 
 import { db } from './db/connect.js';
-import { notFound } from './middleware/errorMiddleware.js';
+import { notFound } from './middleware/not-found.middleware.js';
 import router from './services/router.js';
 
 const app = express();

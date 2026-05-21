@@ -3,13 +3,13 @@ import type { Request, Response } from 'express';
 import type { AuthUser, RegisterUser } from '../model/user.model.js';
 
 import { db } from '../../../db/connect.js';
-import { getUser } from '../repository/user.repository.js';
+import { getUserByEmail } from '../repository/user.repository.js';
 import { createActivationHexCode, createJwtToken, hashPassword, isPasswordCorrect } from '../services/user.service.js';
 
 export const authUser = async (req: Request<object, object, AuthUser>, res: Response) => {
   const { email, password } = req.body;
 
-  const userInfo = await getUser(email);
+  const userInfo = await getUserByEmail(email);
 
   if (!userInfo || !isPasswordCorrect(password, userInfo.password)) {
     return res.status(401).send({ error: true, message: 'Invalid username or password.' });
@@ -25,7 +25,7 @@ export const authUser = async (req: Request<object, object, AuthUser>, res: Resp
 export const registerUser = async (req: Request<object, object, RegisterUser>, res: Response) => {
   const { email, firstname, lastname, password } = req.body;
 
-  const user = await getUser(email);
+  const user = await getUserByEmail(email);
 
   if (user) {
     res.status(409).send({ error: true, message: 'An account with this email address already exists.' });
@@ -41,5 +41,5 @@ export const registerUser = async (req: Request<object, object, RegisterUser>, r
     [email, encryptedPassword, firstname, lastname, false, activationToken],
   );
 
-  res.send({ email, firstname, lastname });
+  res.status(201).send({ error: false, message: `User Created Successfully` });
 };
