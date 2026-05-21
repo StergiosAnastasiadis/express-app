@@ -16,7 +16,7 @@ export const validate = (schemas: RequestSchema) => {
 
       if (error) {
         res.status(400).json({
-          errors: error instanceof z.ZodError ? error.issues : 'Invalid body',
+          errors: error instanceof z.ZodError ? error.issues : 'Invalid request body',
           status: 'fail',
         });
 
