@@ -22,4 +22,4 @@ export const isPasswordCorrect = (input: string, saved: string) => bcrypt.compar
 
 export const createActivationHexCode = () => randomBytes(20).toString('hex');
 
-export const hashPassword = async (password: string) => await bcrypt.hash(password, 10);
+export const encryptPassword = async (password: string) => await bcrypt.hash(password, 10);

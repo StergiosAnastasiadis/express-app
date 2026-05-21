@@ -3,7 +3,12 @@ import type { Request, Response } from 'express';
 import type { AuthUser, RegisterUser } from '../model/user.model.js';
 
 import { createUser, getUserByEmail } from '../repository/user.repository.js';
-import { createActivationHexCode, createJwtToken, hashPassword, isPasswordCorrect } from '../services/user.service.js';
+import {
+  createActivationHexCode,
+  createJwtToken,
+  encryptPassword,
+  isPasswordCorrect,
+} from '../services/user.service.js';
 
 export const authUser = async (req: Request<object, object, AuthUser>, res: Response) => {
   const { email, password } = req.body;
@@ -33,7 +38,7 @@ export const registerUser = async (req: Request<object, object, RegisterUser>, r
 
   const activationToken = createActivationHexCode();
 
-  const encryptedPassword = await hashPassword(password);
+  const encryptedPassword = await encryptPassword(password);
 
   await createUser({
     activationToken,
