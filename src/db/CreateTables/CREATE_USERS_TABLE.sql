@@ -5,5 +5,5 @@ CREATE TABLE users (
 	firstname VARCHAR(45) NOT NULL,
 	lastname VARCHAR(45) NOT NULL,
 	active boolean NOT NULL,
-	"activationToken" VARCHAR(40) NOT NULL 
+	activation_token VARCHAR(40) NOT NULL 
 )

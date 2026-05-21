@@ -5,7 +5,7 @@ import type { User } from '../model/user.model.js';
 import { db } from '../../../db/connect.js';
 
 interface CreateUserInput {
-  activationToken: string;
+  activation_token: string;
   email: string;
   encryptedPassword: string;
   firstname: string;
@@ -16,11 +16,11 @@ interface CreateUserInput {
  * Inserts a new user into the database
  */
 export const createUser = async (userData: CreateUserInput): Promise<void> => {
-  const { activationToken, email, encryptedPassword, firstname, lastname } = userData;
+  const { activation_token, email, encryptedPassword, firstname, lastname } = userData;
 
   await db.query(
-    'INSERT INTO users (email, password, firstname, lastname, active, "activationToken") VALUES ($1, $2, $3, $4, $5, $6)',
-    [email, encryptedPassword, firstname, lastname, false, activationToken],
+    'INSERT INTO users (email, password, firstname, lastname, active, "activation_token") VALUES ($1, $2, $3, $4, $5, $6)',
+    [email, encryptedPassword, firstname, lastname, false, activation_token],
   );
 };
 

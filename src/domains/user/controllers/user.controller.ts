@@ -36,12 +36,12 @@ export const registerUser = async (req: Request<object, object, RegisterUser>, r
     return;
   }
 
-  const activationToken = createActivationHexCode();
+  const activation_token = createActivationHexCode();
 
   const encryptedPassword = await encryptPassword(password);
 
   await createUser({
-    activationToken,
+    activation_token,
     email,
     encryptedPassword,
     firstname,
