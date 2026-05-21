@@ -2,7 +2,7 @@ import cors from 'cors';
 import express from 'express';
 import helmet from 'helmet';
 
-// import { db } from './db/connect.js';
+import { db } from './db/connect.js';
 import { notFound } from './middleware/errorMiddleware.js';
 import router from './services/router.js';
 
@@ -18,7 +18,7 @@ app.use(helmet({ crossOriginEmbedderPolicy: false }));
 app.use(cors());
 
 // PostgreSQL
-// await db.connect();
+await db.connect();
 
 app.use('/', router);
 app.get('/', (req, res) => res.send('<h1>Hello Express!!!</h1>'));
