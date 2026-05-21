@@ -2,8 +2,7 @@ import type { Request, Response } from 'express';
 
 import type { AuthUser, RegisterUser } from '../model/user.model.js';
 
-import { db } from '../../../db/connect.js';
-import { getUserByEmail } from '../repository/user.repository.js';
+import { createUser, getUserByEmail } from '../repository/user.repository.js';
 import { createActivationHexCode, createJwtToken, hashPassword, isPasswordCorrect } from '../services/user.service.js';
 
 export const authUser = async (req: Request<object, object, AuthUser>, res: Response) => {
@@ -36,10 +35,13 @@ export const registerUser = async (req: Request<object, object, RegisterUser>, r
 
   const encryptedPassword = await hashPassword(password);
 
-  await db.query(
-    'INSERT INTO users (email, password, firstname, lastname, active, "activationToken") VALUES ($1, $2, $3, $4, $5, $6)',
-    [email, encryptedPassword, firstname, lastname, false, activationToken],
-  );
+  await createUser({
+    activationToken,
+    email,
+    encryptedPassword,
+    firstname,
+    lastname,
+  });
 
   res.status(201).send({ error: false, message: `User Created Successfully` });
 };
