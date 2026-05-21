@@ -1,7 +1,5 @@
 import type { QueryResult } from 'pg';
 
-import jwt from 'jsonwebtoken';
-
 import type { User } from '../model/user.model.js';
 
 import { db } from '../../../db/connect.js';
@@ -13,8 +11,4 @@ export const getUser = async (email: string) => {
   if (user.rows.length > 0) return user.rows[0];
 
   return false;
-};
-
-export const generateToken = (userInfo: User) => {
-  return jwt.sign(userInfo, 'JWT_SECRET', { expiresIn: '1h' });
 };
