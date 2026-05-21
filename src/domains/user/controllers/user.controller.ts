@@ -17,7 +17,9 @@ export const authUser = async (req: Request<object, object, AuthUser>, res: Resp
 
   const token = createJwtToken(userInfo);
 
-  res.status(200).send({ error: false, token, userInfo });
+  const userInfoResponse = { email: userInfo.email, firstname: userInfo.firstname, lastname: userInfo.lastname };
+
+  res.status(200).send({ error: false, token, userInfo: userInfoResponse });
 };
 
 export const registerUser = async (req: Request<object, object, RegisterUser>, res: Response) => {
