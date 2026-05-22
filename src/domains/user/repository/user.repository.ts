@@ -19,8 +19,8 @@ export const createUser = async (userData: CreateUserInput): Promise<void> => {
   const { activation_token, email, encryptedPassword, firstname, lastname } = userData;
 
   await db.query(
-    'INSERT INTO users (email, password, firstname, lastname, active, "activation_token") VALUES ($1, $2, $3, $4, $5, $6)',
-    [email, encryptedPassword, firstname, lastname, false, activation_token],
+    'INSERT INTO users (email, password, firstname, lastname, activation_token) VALUES ($1, $2, $3, $4, $5)',
+    [email, encryptedPassword, firstname, lastname, activation_token],
   );
 };
 
