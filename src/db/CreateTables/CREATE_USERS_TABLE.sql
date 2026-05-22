@@ -6,5 +6,6 @@ CREATE TABLE users (
 	lastname VARCHAR(45) NOT NULL,
 	active boolean NOT NULL DEFAULT FALSE,
 	activation_token VARCHAR(40) NOT NULL,
+	activated_at TIMESTAMPTZ,
 	created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 )
