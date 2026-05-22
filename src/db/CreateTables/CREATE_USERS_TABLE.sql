@@ -8,7 +8,7 @@ CREATE TABLE users (
 	firstname VARCHAR(45) NOT NULL,
 	lastname VARCHAR(45) NOT NULL,
 	active boolean NOT NULL DEFAULT FALSE,
-	activation_token VARCHAR(40) NOT NULL,
+	activation_token VARCHAR(40),
 	activated_at TIMESTAMPTZ,
 	created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 )
